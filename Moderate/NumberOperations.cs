@@ -17,7 +17,7 @@ namespace CodeEvalPractice.Moderate
             return System.IO.File.OpenText(filename);
         }
 
-        static void Main(string[] args)
+        public static void Main(string[] args)
         {
             System.IO.StreamReader reader = OpenInput(args);
             while (!reader.EndOfStream)

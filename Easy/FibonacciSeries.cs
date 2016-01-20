@@ -17,7 +17,7 @@
             return System.IO.File.OpenText(filename);
         }
 
-        static void Main(string[] args)
+        public static void Main(string[] args)
         {
             System.IO.StreamReader reader = OpenInput(args);
             while (!reader.EndOfStream)
@@ -26,10 +26,30 @@
                 if (line == null)
                     continue;
 
-                string[] paramVals = line.Split();
-
-                // Do stuff
+                int fibIndex = System.Int32.Parse(line);
+                System.Console.WriteLine(Fibonacci(fibIndex));
             }
+        }
+
+        static int Fibonacci(int index)
+        {
+            if (index <= 0)
+                return 0;
+
+            if (index <= 2)
+                return 1;
+
+            // holds {n, n-1, n-2} of the sequence
+            // currently holds values to calc F(2) next
+            int[] fib = new int[] { 1, 1, 0 };
+            for( int i=2; i <= index; ++i)
+            {
+                fib[0] = fib[1] + fib[2];
+                fib[2] = fib[1];
+                fib[1] = fib[0];
+            }
+
+            return fib[0];
         }
     }
 }

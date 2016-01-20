@@ -4,7 +4,7 @@
     {
         static void Main(string[] args)
         {
-            //Easy.FizzBuzz.Main(args);
+            Easy.MultiplicationTables.Main(null);
 
             System.Console.WriteLine();
         }
@@ -57,3 +57,4 @@
                 }
             }*/
     }
+}

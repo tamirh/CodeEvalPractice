@@ -17,7 +17,7 @@
             return System.IO.File.OpenText(filename);
         }
 
-        static void Main(string[] args)
+        public static void Main(string[] args)
         {
             System.IO.StreamReader reader = OpenInput(args);
             while (!reader.EndOfStream)
@@ -26,9 +26,13 @@
                 if (line == null)
                     continue;
 
-                string[] paramVals = line.Split();
+                int sum = 0;
+                foreach (char digit in line)
+                {
+                    sum += digit - '0';
+                }
 
-                // Do stuff
+                System.Console.WriteLine(sum);
             }
         }
     }

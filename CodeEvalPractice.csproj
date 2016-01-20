@@ -170,9 +170,9 @@
     <Compile Include="Hard\Grinch.cs" />
     <Compile Include="Hard\IPpackage.cs" />
     <Compile Include="Hard\JuggleFest.cs" />
-    <Compile Include="Hard\Lakes,notcakes.cs" />
-    <Compile Include="Hard\LargestSub-Matrix.cs" />
-    <Compile Include="Hard\LessMoney,MoreProblems.cs" />
+    <Compile Include="Hard\LakesNotCakes.cs" />
+    <Compile Include="Hard\LargestSubMatrix.cs" />
+    <Compile Include="Hard\LessMoneyMoreProblems.cs" />
     <Compile Include="Hard\LevenshteinDistance.cs" />
     <Compile Include="Hard\LightsOut.cs" />
     <Compile Include="Hard\LongestCommonSubsequence.cs" />
@@ -212,7 +212,7 @@
     <Compile Include="Hard\TypeAhead.cs" />
     <Compile Include="Hard\UglyNumbers.cs" />
     <Compile Include="Hard\VisittotheHeadquarters.cs" />
-    <Compile Include="Hard\WhereisWi-Fi.cs" />
+    <Compile Include="Hard\WhereisWiFi.cs" />
     <Compile Include="Hard\Whichwayisfaster.cs" />
     <Compile Include="Hard\WordSearch.cs" />
     <Compile Include="Hard\~Template.cs" />
@@ -223,8 +223,8 @@
     <Compile Include="Moderate\BatsChallenge.cs" />
     <Compile Include="Moderate\Blackorwhite.cs" />
     <Compile Include="Moderate\BrokenLCD.cs" />
-    <Compile Include="Moderate\Buildersteam..cs" />
-    <Compile Include="Moderate\Burrows-Wheelertransform.cs" />
+    <Compile Include="Moderate\Buildersteam.cs" />
+    <Compile Include="Moderate\BurrowsWheelertransform.cs" />
     <Compile Include="Moderate\Cardnumbervalidation.cs" />
     <Compile Include="Moderate\CarRace.cs" />
     <Compile Include="Moderate\CashRegister.cs" />
@@ -243,7 +243,7 @@
     <Compile Include="Moderate\Endianness.cs" />
     <Compile Include="Moderate\FilenamePattern.cs" />
     <Compile Include="Moderate\FindaSquare.cs" />
-    <Compile Include="Moderate\FirstNon-RepeatedCharacter.cs" />
+    <Compile Include="Moderate\FirstNonRepeatedCharacter.cs" />
     <Compile Include="Moderate\FlaviusJosephus.cs" />
     <Compile Include="Moderate\GameofLife.cs" />
     <Compile Include="Moderate\Gronsfeldcipher.cs" />

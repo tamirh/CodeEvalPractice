@@ -17,7 +17,7 @@
             return System.IO.File.OpenText(filename);
         }
 
-        static void Main(string[] args)
+        public static void Main(string[] args)
         {
             System.IO.StreamReader reader = OpenInput(args);
             while (!reader.EndOfStream)
@@ -26,10 +26,38 @@
                 if (line == null)
                     continue;
 
-                string[] paramVals = line.Split();
-
-                // Do stuff
+                string ccardnum = line.Replace(" ", string.Empty);
+                if (IsCCardReal(ccardnum))
+                {
+                    System.Console.WriteLine("Real");
+                }
+                else
+                {
+                    System.Console.WriteLine("Fake");
+                }
             }
+        }
+
+        static bool IsCCardReal(string ccardnum)
+        {
+            int sum = 0;
+            for (int i=0; i<ccardnum.Length; ++i)
+            {
+                int digit = System.Int32.Parse(ccardnum.Substring(i, 1));
+                if (i%2 == 0)
+                {
+                    sum += 2 * digit;
+                }
+                else
+                {
+                    sum += digit;
+                }
+            }
+
+            if (sum % 10 != 0)
+                return false;
+
+            return true;
         }
     }
 }

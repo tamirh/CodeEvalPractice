@@ -1,5 +1,6 @@
 ﻿namespace CodeEvalPractice.Easy
 {
+    // https://www.codeeval.com/open_challenges/8/
     class ReverseWords
     {
         static System.IO.StreamReader OpenInput(string[] args)
@@ -17,7 +18,7 @@
             return System.IO.File.OpenText(filename);
         }
 
-        static void Main(string[] args)
+        public static void Main(string[] args)
         {
             System.IO.StreamReader reader = OpenInput(args);
             while (!reader.EndOfStream)
@@ -26,9 +27,12 @@
                 if (line == null)
                     continue;
 
-                string[] paramVals = line.Split();
+                string[] words = line.Split();
+                System.Array.Reverse(words);
 
-                // Do stuff
+                string reversed = string.Join(" ", words);
+
+                System.Console.WriteLine(reversed);
             }
         }
     }

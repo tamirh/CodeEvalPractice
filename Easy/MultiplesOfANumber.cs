@@ -1,5 +1,6 @@
 ﻿namespace CodeEvalPractice.Easy
 {
+    // https://www.codeeval.com/open_challenges/18/
     class MultiplesOfANumber
     {
         static System.IO.StreamReader OpenInput(string[] args)
@@ -17,7 +18,7 @@
             return System.IO.File.OpenText(filename);
         }
 
-        static void Main(string[] args)
+        public static void Main(string[] args)
         {
             System.IO.StreamReader reader = OpenInput(args);
             while (!reader.EndOfStream)
@@ -26,9 +27,18 @@
                 if (line == null)
                     continue;
 
-                string[] paramVals = line.Split();
+                string[] paramVals = line.Split(',');
 
-                // Do stuff
+                int compVal = System.Int32.Parse(paramVals[0]);
+                int baseVal = System.Int32.Parse(paramVals[1]);
+                int currVal = baseVal;
+                
+                while (currVal <= compVal)
+                {
+                    currVal += baseVal;
+                }
+
+                System.Console.WriteLine(currVal);
             }
         }
     }

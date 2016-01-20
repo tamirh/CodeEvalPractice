@@ -2,34 +2,25 @@
 {
     class MultiplicationTables
     {
-        static System.IO.StreamReader OpenInput(string[] args)
+        public static void Main(string[] args)
         {
-            string filename;
-            if (args == null || args.Length < 1)
+            const int DEFAULT_NROWS = 12;
+            const int DEFAULT_NCOLS = 12;
+            int nRows = DEFAULT_NROWS;
+            int nCols = DEFAULT_NCOLS;
+
+            System.Text.StringBuilder output = new System.Text.StringBuilder();
+            for (int col = 1; col <= nCols; ++col)
             {
-                filename = "./../../Easy/" + System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name + ".txt";
+                for (int row = 1; row <= nRows; ++row)
+                {
+                    output.Append(System.String.Format("{0,4}", row * col));
+                }
+
+                output.AppendLine();
             }
-            else
-            {
-                filename = args[0];
-            }
 
-            return System.IO.File.OpenText(filename);
-        }
-
-        static void Main(string[] args)
-        {
-            System.IO.StreamReader reader = OpenInput(args);
-            while (!reader.EndOfStream)
-            {
-                string line = reader.ReadLine();
-                if (line == null)
-                    continue;
-
-                string[] paramVals = line.Split();
-
-                // Do stuff
-            }
+            System.Console.Write(output.ToString());
         }
     }
 }

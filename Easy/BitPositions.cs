@@ -17,7 +17,7 @@
             return System.IO.File.OpenText(filename);
         }
 
-        static void Main(string[] args)
+        public static void Main(string[] args)
         {
             System.IO.StreamReader reader = OpenInput(args);
             while (!reader.EndOfStream)
@@ -26,9 +26,24 @@
                 if (line == null)
                     continue;
 
-                string[] paramVals = line.Split();
+                string[] paramVals = line.Split(',');
+                int num = System.Int32.Parse(paramVals[0]);
+                int bitPos1 = System.Int32.Parse(paramVals[1]);
+                int bitPos2 = System.Int32.Parse(paramVals[2]);
 
-                // Do stuff
+                // Shift over so the bit we care about is in the lowest bit position
+                // Then mask out all other bits
+                int bitval1 = 1 & (num >> (bitPos1 - 1));
+                int bitval2 = 1 & (num >> (bitPos2 - 1));
+
+                if (bitval1 == bitval2)
+                {
+                    System.Console.WriteLine("true");
+                }
+                else
+                {
+                    System.Console.WriteLine("false");
+                }
             }
         }
     }
