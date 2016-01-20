@@ -4,7 +4,7 @@
     {
         static void Main(string[] args)
         {
-            Easy.BeautifulStrings.Main(null);
+            Easy.CapitalizeWords.Main(null);
 
 
             System.Console.WriteLine();

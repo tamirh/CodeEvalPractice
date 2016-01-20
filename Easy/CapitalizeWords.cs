@@ -26,9 +26,20 @@
                 if (line == null)
                     continue;
 
-                string[] paramVals = line.Split();
+                char[] chars = line.ToCharArray();
+                char prevChar = ' ';
+                for (int i = 0; i < chars.Length; ++i)
+                {
+                    if (prevChar == ' ')
+                    {
+                        if (chars[i] >= 'a' && chars[i] <= 'z')
+                            chars[i] = (char)(chars[i] + ('A' - 'a'));
+                    }
 
-                // Do stuff
+                    prevChar = line[i];
+                }
+
+                System.Console.WriteLine(chars);
             }
         }
     }

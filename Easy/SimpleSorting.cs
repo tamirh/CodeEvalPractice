@@ -26,9 +26,18 @@
                 if (line == null)
                     continue;
 
-                string[] paramVals = line.Split();
+                string[] stringValues = line.Split();
+                double[] values = System.Array.ConvertAll(stringValues, System.Double.Parse);
 
-                // Do stuff
+                System.Array.Sort(values);
+
+                System.Collections.Generic.List<string> output = new System.Collections.Generic.List<string>();
+                foreach(double value in values)
+                {
+                    output.Add(value.ToString("F3"));
+                }
+
+                System.Console.WriteLine(string.Join(" ", output));
             }
         }
     }

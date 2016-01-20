@@ -22,14 +22,58 @@
             System.IO.StreamReader reader = OpenInput(args);
             while (!reader.EndOfStream)
             {
-                string line = reader.ReadLine();
-                if (line == null)
+                string line = reader.ReadLine().Trim();
+                if (line == null || line.Length < 1)
                     continue;
 
-                string[] paramVals = line.Split();
+                // Find the second to last word in a string
+                // Could do it with Split(), but this is a "C" style answer
 
-                // Do stuff
+                int curBegin = 0;
+                int curEnd = FindWordEnd(line, 0);
+                int nextBegin = FindWordBegin(line, curEnd);
+                int nextEnd = FindWordEnd(line, nextBegin);
+
+                while(nextEnd < line.Length)
+                {
+                    curBegin = nextBegin;
+                    curEnd = nextEnd;
+
+                    nextBegin = FindWordBegin(line, curEnd);
+                    nextEnd = FindWordEnd(line, nextBegin);
+                }
+
+                System.Console.WriteLine(line.Substring(curBegin, curEnd - curBegin));
             }
+        }
+
+        static bool WordChar(char c)
+        {
+            return (c != ' ');
+        }
+
+        static int FindWordBegin(string line, int start)
+        {
+            int i;
+            for (i = start + 1; i < line.Length; ++i)
+            {
+                if (WordChar(line[i]))
+                    return i;
+            }
+
+            return i;
+        }
+
+        static int FindWordEnd(string line, int start)
+        {
+            int i;
+            for (i = start + 1; i < line.Length; ++i)
+            {
+                if (!WordChar(line[i]))
+                    return i;
+            }
+
+            return i;
         }
     }
 }
