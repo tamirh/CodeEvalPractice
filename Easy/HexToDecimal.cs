@@ -26,9 +26,18 @@
                 if (line == null)
                     continue;
 
-                string[] paramVals = line.Split();
+                line = line.Trim();
 
-                // Do stuff
+                int value = 0;
+                for (int i = line.Length - 1; i >= 0; --i)
+                {
+                    char c = line[i];
+                    int digit = c > '9' ? c - 'a' + 10 : c - '0';
+                    int hexPos = line.Length - i - 1;
+                    value += digit << hexPos * 4;
+                }
+
+                System.Console.WriteLine(value);
             }
         }
     }

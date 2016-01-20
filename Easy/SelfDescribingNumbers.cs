@@ -26,10 +26,36 @@
                 if (line == null)
                     continue;
 
-                string[] paramVals = line.Split();
-
-                // Do stuff
+                if (IsSelfDescribing(line))
+                {
+                    System.Console.WriteLine("1");
+                }
+                else
+                {
+                    System.Console.WriteLine("0");
+                }
             }
+        }
+
+        static bool IsSelfDescribing(string num)
+        {
+            int[] expectedDigits = new int[10];
+            int[] actualDigits = new int[10];
+
+            for (int i=0; i < num.Length; ++i)
+            {
+                int value = num[i] - '0';
+                actualDigits[value]++;
+                expectedDigits[i] = value;
+            }
+
+            for (int i=0; i<10; ++i)
+            {
+                if (expectedDigits[i] != actualDigits[i])
+                    return false;
+            }
+
+            return true;
         }
     }
 }

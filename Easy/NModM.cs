@@ -26,9 +26,15 @@
                 if (line == null)
                     continue;
 
-                string[] paramVals = line.Split();
+                string[] paramVals = line.Split(',');
 
-                // Do stuff
+                int n = System.Int32.Parse(paramVals[0]);
+                int m = System.Int32.Parse(paramVals[1]);
+
+                int div = n / m;
+                int mod = n - m * div;
+                
+                System.Console.WriteLine(mod);
             }
         }
     }

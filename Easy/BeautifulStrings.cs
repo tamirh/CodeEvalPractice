@@ -22,13 +22,30 @@
             System.IO.StreamReader reader = OpenInput(args);
             while (!reader.EndOfStream)
             {
-                string line = reader.ReadLine();
+                string line = reader.ReadLine().Trim().ToLower();
                 if (line == null)
                     continue;
 
-                string[] paramVals = line.Split();
+                int[] charCounts = new int[26];
+                foreach(char c in line)
+                {
+                    int index = c - 'a';
 
-                // Do stuff
+                    // ignore punctuation
+                    if (index < 26 && index >= 0)
+                        charCounts[index]++;
+                }
+
+                System.Array.Sort(charCounts);
+
+                int charBeauty = 26;
+                int beautySum = 0;
+                for (int i = charCounts.Length - 1; i >= 0; --i)
+                {
+                    beautySum += charCounts[i] * charBeauty--;
+                }
+
+                System.Console.WriteLine(beautySum);
             }
         }
     }

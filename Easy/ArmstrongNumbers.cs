@@ -26,10 +26,28 @@
                 if (line == null)
                     continue;
 
-                string[] paramVals = line.Split();
-
-                // Do stuff
+                if (IsArmstrong(line.Trim()))
+                {
+                    System.Console.WriteLine("True");
+                }
+                else
+                {
+                    System.Console.WriteLine("False");
+                }
             }
+        }
+
+        static bool IsArmstrong(string value)
+        {
+            int sum = 0;
+            int pow = value.Length;
+
+            foreach(char digit in value)
+            {
+                sum += (int)System.Math.Pow(digit - '0', pow);
+            }
+
+            return sum == System.Int32.Parse(value);
         }
     }
 }

@@ -26,10 +26,39 @@
                 if (line == null)
                     continue;
 
-                string[] paramVals = line.Split();
-
-                // Do stuff
+                if (IsHappy(System.Int32.Parse(line)))
+                {
+                    System.Console.WriteLine("1");
+                }
+                else
+                {
+                    System.Console.WriteLine("0");
+                }
             }
+        }
+
+        static bool IsHappy(int inputNumber)
+        {
+            System.Collections.Generic.HashSet<int> numbersSeen = new System.Collections.Generic.HashSet<int>();
+            while (!numbersSeen.Contains(inputNumber))
+            {
+                string inputString = inputNumber.ToString();
+                numbersSeen.Add(inputNumber);
+
+                inputNumber = 0;
+                foreach (char digit in inputString)
+                {
+                    int digitVal = digit - '0';
+                    inputNumber += digitVal * digitVal;
+                }
+
+                if (inputNumber == 1)
+                {
+                    return true;
+                }
+            }
+
+            return false;
         }
     }
 }

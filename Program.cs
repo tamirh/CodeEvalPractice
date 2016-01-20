@@ -4,7 +4,7 @@
     {
         static void Main(string[] args)
         {
-            Easy.Football.Main(null);
+            Easy.BeautifulStrings.Main(null);
 
 
             System.Console.WriteLine();
