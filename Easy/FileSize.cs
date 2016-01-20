@@ -2,7 +2,7 @@
 {
     class FileSize
     {
-        static System.IO.StreamReader OpenInput(string[] args)
+        static string InputPath(string[] args)
         {
             string filename;
             if (args == null || args.Length < 1)
@@ -14,22 +14,15 @@
                 filename = args[0];
             }
 
-            return System.IO.File.OpenText(filename);
+            return filename;
         }
 
         public static void Main(string[] args)
         {
-            System.IO.StreamReader reader = OpenInput(args);
-            while (!reader.EndOfStream)
-            {
-                string line = reader.ReadLine();
-                if (line == null)
-                    continue;
+            string path = InputPath(args);
+            System.IO.FileInfo fileInfo = new System.IO.FileInfo(path);
 
-                string[] paramVals = line.Split();
-
-                // Do stuff
-            }
+            System.Console.WriteLine(fileInfo.Length);
         }
     }
 }

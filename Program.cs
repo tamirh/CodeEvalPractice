@@ -4,7 +4,8 @@
     {
         static void Main(string[] args)
         {
-            Easy.MultiplicationTables.Main(null);
+            Easy.SetIntersection.Main(null);
+
 
             System.Console.WriteLine();
         }

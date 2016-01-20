@@ -19,6 +19,8 @@
 
         public static void Main(string[] args)
         {
+            int sum = 0;
+
             System.IO.StreamReader reader = OpenInput(args);
             while (!reader.EndOfStream)
             {
@@ -26,10 +28,11 @@
                 if (line == null)
                     continue;
 
-                string[] paramVals = line.Split();
-
+                sum += System.Int32.Parse(line);
                 // Do stuff
             }
+
+            System.Console.WriteLine(sum);
         }
     }
 }
