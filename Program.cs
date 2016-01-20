@@ -4,7 +4,7 @@
     {
         static void Main(string[] args)
         {
-            Easy.SetIntersection.Main(null);
+            Easy.Football.Main(null);
 
 
             System.Console.WriteLine();

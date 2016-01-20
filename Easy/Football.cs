@@ -33,43 +33,41 @@
 
         static void FindTeamAffiliations(string input)
         {
-            // Each countries' list of teams they like is separated by a |
-            // The names of the teams are each separated by a ' '
-            string[] teamAffiliationStrings = input.Split(new char[] { '|' }, System.StringSplitOptions.RemoveEmptyEntries);
+            // key=team
+            // value=list of countries that support this team
+            System.Collections.Generic.SortedDictionary<int, System.Collections.Generic.SortedSet<int>> teamSupporters = new System.Collections.Generic.SortedDictionary<int, System.Collections.Generic.SortedSet<int>>();
 
-            // key: teamname
-            // value: list of countries that like that team
-            System.Collections.Generic.SortedDictionary<string, System.Collections.Generic.List<string>> teamAffiliation = new System.Collections.Generic.SortedDictionary<string, System.Collections.Generic.List<string>>();
-            int countryIndex = 0;
-            foreach (string teamsLiked in teamAffiliationStrings)
+            string[] teamsSupportedByCountries = input.Split(new char[] { '|' }, System.StringSplitOptions.RemoveEmptyEntries);
+
+            int countryId = 0;
+            foreach( string teamsSupportedByThisCountryString in teamsSupportedByCountries)
             {
-                ++countryIndex;
-                string countryName = countryIndex.ToString();
+                countryId++;
 
-                string[] teams = teamsLiked.Split(new char[] { ' ' }, System.StringSplitOptions.RemoveEmptyEntries);
-                foreach (string team in teams)
+                string[] teamsSupportedByThisCountry = teamsSupportedByThisCountryString.Split(new char[] { ' ' }, System.StringSplitOptions.RemoveEmptyEntries);
+                foreach( string teamSupportedByThisCountry in teamsSupportedByThisCountry)
                 {
-                    if (!teamAffiliation.ContainsKey(team))
-                        teamAffiliation.Add(team, new System.Collections.Generic.List<string>());
+                    int teamId = System.Int32.Parse(teamSupportedByThisCountry);
+                    if (!teamSupporters.ContainsKey(teamId))
+                    {
+                        teamSupporters.Add(teamId, new System.Collections.Generic.SortedSet<int>());
+                    }
 
-                    teamAffiliation[team].Add(countryName);
+                    teamSupporters[teamId].Add(countryId);
                 }
             }
-            
-            // Go through each team and list out which countries like that team
-            System.Text.StringBuilder output = new System.Text.StringBuilder();
-            foreach (string team in teamAffiliation.Keys)
-            {
-                System.Collections.Generic.List<string> countries = teamAffiliation[team];
-                countries.Sort();
 
-                output.AppendFormat("{0}:", team);
-                output.Append(string.Join(",", countries.ToArray()));
-                output.Append("; ");
+            System.Collections.Generic.List<string> output = new System.Collections.Generic.List<string>();
+            foreach( int teamId in teamSupporters.Keys )
+            {
+                System.Collections.Generic.SortedSet<int> countriesThatSupportTeam = teamSupporters[teamId];
+                int[] countryList = new int[countriesThatSupportTeam.Count];
+                countriesThatSupportTeam.CopyTo(countryList);
+
+                output.Add(teamId + ":" + string.Join(",", countryList) + ";");
             }
 
-            // Don't strip off last whitespace?
-            System.Console.WriteLine(output.ToString());
+            System.Console.WriteLine(string.Join(" ", output.ToArray()));
         }
     }
 }
