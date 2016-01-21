@@ -4,7 +4,7 @@
     {
         static void Main(string[] args)
         {
-            Easy.JSONMenuIDs.Main(null);
+            Easy.MultiplyLists.Main(null);
 
 
             System.Console.WriteLine();

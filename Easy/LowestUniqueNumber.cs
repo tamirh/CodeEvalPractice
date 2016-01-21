@@ -26,10 +26,44 @@
                 if (line == null)
                     continue;
 
-                string[] paramVals = line.Split();
-
-                // Do stuff
+                LowestUnique(line.Replace(" ", System.String.Empty));
             }
+        }
+
+        static void LowestUnique(string input)
+        {
+            int[] digitCounts = new int[10];
+            foreach (char c in input)
+            {
+                if (c >= '0' && c <= '9')
+                {
+                    digitCounts[c - '0']++;
+                }
+            }
+
+            for (int i = 0; i < 10; ++i)
+            {
+                if (digitCounts[i] == 1)
+                {
+                    // we know which value was the winner, find which player said that value
+                    int player = 1;
+                    foreach (char c in input)
+                    {
+                        if (c >= '0' && c <= '9')
+                        {
+                            if (c - '0' == i)
+                            {
+                                System.Console.WriteLine(player);
+                                return;
+                            }
+
+                            ++player;
+                        }
+                    }
+                }
+            }
+
+            System.Console.WriteLine("0");
         }
     }
 }

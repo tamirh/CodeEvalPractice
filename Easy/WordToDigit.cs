@@ -1,5 +1,6 @@
 ﻿namespace CodeEvalPractice.Easy
 {
+    // https://www.codeeval.com/open_challenges/104/
     class WordToDigit
     {
         static System.IO.StreamReader OpenInput(string[] args)
@@ -26,9 +27,31 @@
                 if (line == null)
                     continue;
 
-                string[] paramVals = line.Split();
+                string[] words = line.Split(';');
 
-                // Do stuff
+                int index = 0;
+                char[] digits = new char[words.Length];
+                foreach(string word in words)
+                {
+                    char c = '0';
+                    switch (word.ToLower())
+                    {
+                        case "zero": c = '0'; break;
+                        case "one": c = '1'; break;
+                        case "two": c = '2'; break;
+                        case "three": c = '3'; break;
+                        case "four": c = '4'; break;
+                        case "five": c = '5'; break;
+                        case "six": c = '6'; break;
+                        case "seven": c = '7'; break;
+                        case "eight": c = '8'; break;
+                        case "nine": c = '9'; break;
+                    }
+
+                    digits[index++] = c;
+                }
+
+                System.Console.WriteLine(digits);
             }
         }
     }

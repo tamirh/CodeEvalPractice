@@ -26,9 +26,20 @@
                 if (line == null)
                     continue;
 
-                string[] paramVals = line.Split();
+                string[] lists = line.Split('|');
+                string[] leftListStrings = lists[0].Split(new char[] { ' ' }, System.StringSplitOptions.RemoveEmptyEntries);
+                string[] rightListStrings = lists[1].Split(new char[] { ' ' }, System.StringSplitOptions.RemoveEmptyEntries);
 
-                // Do stuff
+                int[] leftList = System.Array.ConvertAll(leftListStrings, System.Int32.Parse);
+                int[] rightList = System.Array.ConvertAll(rightListStrings, System.Int32.Parse);
+
+                int[] result = new int[leftList.Length];
+                for (int i=0; i<leftList.Length; ++i)
+                {
+                    result[i] = leftList[i] * rightList[i];
+                }
+
+                System.Console.WriteLine(string.Join(" ", result));
             }
         }
     }

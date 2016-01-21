@@ -26,9 +26,25 @@
                 if (line == null)
                     continue;
 
-                string[] paramVals = line.Split();
+                string[] paramVals = line.Split(':');
+                string listString = paramVals[0];
+                string swapString = paramVals[1];
 
-                // Do stuff
+                string[] list = listString.Split(new char[] { ' ' }, System.StringSplitOptions.RemoveEmptyEntries);
+                string[] swaps = swapString.Split(new char[] { ' ', ',' }, System.StringSplitOptions.RemoveEmptyEntries);
+                
+                foreach (string swap in swaps)
+                {
+                    string[] swapPos = swap.Split('-');
+                    int left = System.Int32.Parse(swapPos[0]);
+                    int right = System.Int32.Parse(swapPos[1]);
+
+                    string tmp = list[left];
+                    list[left] = list[right];
+                    list[right] = tmp;
+                }
+
+                System.Console.WriteLine(string.Join(" ", list));
             }
         }
     }

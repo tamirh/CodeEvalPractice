@@ -26,9 +26,20 @@
                 if (line == null)
                     continue;
 
-                string[] paramVals = line.Split();
+                string[] words = line.Split();
+                string longest = words[0];
+                int longestLength = 0;
 
-                // Do stuff
+                foreach (string word in words)
+                {
+                    if (word.Length > longestLength)
+                    {
+                        longest = word;
+                        longestLength = word.Length;
+                    }
+                }
+
+                System.Console.WriteLine(longest);
             }
         }
     }
