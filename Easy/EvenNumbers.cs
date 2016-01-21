@@ -26,9 +26,16 @@
                 if (line == null)
                     continue;
 
-                string[] paramVals = line.Split();
-
-                // Do stuff
+                int num = System.Int32.Parse(line.Trim());
+                
+                if (num%2==0)
+                {
+                    System.Console.WriteLine("1");
+                }
+                else
+                {
+                    System.Console.WriteLine("0");
+                }
             }
         }
     }

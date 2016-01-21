@@ -26,10 +26,26 @@
                 if (line == null)
                     continue;
 
-                string[] paramVals = line.Split();
+                string[] paramVals = line.Split(new char[] { '(' }, System.StringSplitOptions.RemoveEmptyEntries);
+                int x1, y1, x2, y2;
+                GetCoords(paramVals[0], out x1, out y1);
+                GetCoords(paramVals[1], out x2, out y2);
 
-                // Do stuff
+                int dx = x2 - x1;
+                int dy = y2 - y1;
+                double distance = System.Math.Sqrt(dx*dx + dy*dy);
+
+                System.Console.WriteLine((int)distance);
             }
+        }
+
+        static void GetCoords(string coord, out int x, out int y)
+        {
+            x = y = 0;
+
+            string[] splitCoords = coord.Split(new char[] { ')', ' ', ',' }, System.StringSplitOptions.RemoveEmptyEntries);
+            x = System.Int32.Parse(splitCoords[0]);
+            y = System.Int32.Parse(splitCoords[1]);
         }
     }
 }

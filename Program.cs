@@ -4,7 +4,7 @@
     {
         static void Main(string[] args)
         {
-            Easy.CapitalizeWords.Main(null);
+            Easy.JSONMenuIDs.Main(null);
 
 
             System.Console.WriteLine();

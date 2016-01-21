@@ -26,9 +26,41 @@
                 if (line == null)
                     continue;
 
-                string[] paramVals = line.Split();
+                int itemsPos = line.IndexOf("\"items\"");
+                if (itemsPos == -1)
+                    continue;
 
-                // Do stuff
+                int itemsBegin = line.IndexOf("[", itemsPos);
+                if (itemsBegin == -1)
+                    continue;
+
+                int itemsEnd = line.IndexOf("]", itemsBegin);
+                if (itemsEnd == -1)
+                    continue;
+
+                string[] items = line.Substring(itemsBegin, itemsEnd-itemsBegin).Split(new char[] { '{', '[', ']' }, System.StringSplitOptions.RemoveEmptyEntries);
+
+                int sum = 0;
+                foreach(string item in items)
+                {
+                    if (item.IndexOf("\"label\"") >= 0)
+                    {
+                        int idBegin = item.IndexOf("\"id\":");
+                        if (idBegin == -1)
+                            continue;
+
+                        int idEnd = item.IndexOf(",", idBegin);
+                        if (idEnd == -1)
+                            continue;
+
+                        string idValueString = item.Substring(5 + idBegin, idEnd - idBegin - 5).Trim();
+                        int idValue = System.Int32.Parse(idValueString);
+
+                        sum += idValue;
+                    }
+                }
+
+                System.Console.WriteLine(sum);
             }
         }
     }

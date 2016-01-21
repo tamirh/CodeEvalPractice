@@ -26,9 +26,19 @@
                 if (line == null)
                     continue;
 
-                string[] paramVals = line.Split();
+                char[] chars = line.ToCharArray();
+                for (int i = 0; i < chars.Length; ++i)
+                {
+                    if (System.Char.IsUpper(chars[i]))
+                    {
+                        chars[i] = System.Char.ToLower(chars[i]);
+                    } else if (System.Char.IsLower(chars[i]))
+                    {
+                        chars[i] = System.Char.ToUpper(chars[i]);
+                    }
+                }
 
-                // Do stuff
+                System.Console.WriteLine(chars);
             }
         }
     }
