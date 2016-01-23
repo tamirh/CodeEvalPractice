@@ -259,6 +259,7 @@
     <Compile Include="Moderate\MagicNumbers.cs" />
     <Compile Include="Moderate\MeetCocktailsort.cs" />
     <Compile Include="Moderate\MinimumCoins.cs" />
+    <Compile Include="Moderate\MixedContent.cs" />
     <Compile Include="Moderate\Mthtolastelement.cs" />
     <Compile Include="Moderate\NumberofOnes.cs" />
     <Compile Include="Moderate\NumberOperations.cs" />

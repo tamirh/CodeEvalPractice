@@ -1,5 +1,6 @@
 namespace CodeEvalPractice.Hard
 {
+    // https://www.codeeval.com/open_challenges/42/
     class UglyNumbers
     {
         static System.IO.StreamReader OpenInput(string[] args)
@@ -26,10 +27,41 @@ namespace CodeEvalPractice.Hard
                 if (line == null)
                     continue;
 
-                string[] paramVals = line.Split();
-                
-                // Do stuff
+                int numUglies = 0;
+                int incIndex = 0;
+                char[] ops = new char[line.Length];
+                while (ops[line.Length - 1] < 3)
+                {
+                    ops[incIndex]++;
+
+                    if (ops)
+                }
             }
+        }
+
+        static bool IsExpressionUgly(string s, char[] ops)
+        {
+            return false;
+        }
+
+        static bool IsUglyNumber(int num)
+        {
+            if (num == 0)
+                return true;
+
+            if (num % 2 == 0)
+                return true;
+
+            if (num % 3 == 0)
+                return true;
+
+            if (num % 5 == 0)
+                return true;
+
+            if (num % 7 == 0)
+                return true;
+
+            return false;
         }
     }
 }
